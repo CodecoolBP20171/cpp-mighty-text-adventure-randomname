@@ -3,5 +3,5 @@ project(cpp_2nd_tw_mighty_text_adventure)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Area.hpp Game.cpp Game.h)
+set(SOURCE_FILES main.cpp src/Area.hpp src/Game.cpp src/Game.h src/InputParser.cpp src/InputParser.h src/InputType.h)
 add_executable(cpp_2nd_tw_mighty_text_adventure ${SOURCE_FILES})
