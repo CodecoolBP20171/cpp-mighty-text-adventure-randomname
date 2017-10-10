@@ -2,7 +2,7 @@
 // Created by meszi on 2017.10.10..
 //
 
-#include "Parser.h"
+#include "../headers/Parser.h"
 
 InputType Parser::parseInput(string &input) {
     input = toLowercase(input);

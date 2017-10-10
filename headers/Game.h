@@ -2,7 +2,7 @@
 #define CPP_2ND_TW_MIGHTY_TEXT_ADVENTURE_GAME_H
 
 #include <vector>
-#include "Area.hpp"
+#include "../src/Area.hpp"
 #include "Parser.h"
 
 using namespace std;
