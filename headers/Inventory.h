@@ -19,7 +19,7 @@ public:
 private:
     const int capacity;
     int currentWeight;
-    std::vector items<Item>;
+    std::vector<Item> items;
 };
 
 
