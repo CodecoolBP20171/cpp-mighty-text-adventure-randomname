@@ -4,10 +4,15 @@
 
 using namespace std;
 
+/** An Area instance should only contain a single description that
+ *  a room in a map could have. Each possible description should be
+ *  loaded in Game.init() in the areas vector.
+ */
 class Area
 {
 public:
     Area(const string& description) : description(description) {}
+    const string getDescription() const { return description; }
 
 private:
 
