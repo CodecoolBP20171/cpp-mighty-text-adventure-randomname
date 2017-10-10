@@ -1,0 +1,24 @@
+//
+// Created by meszi on 2017.10.10..
+//
+
+#include "Parser.h"
+
+InputType Parser::parseInput(string &input) {
+    input = toLowercase(input);
+    if      (input == "h" || input == "help")   return HELP;
+    else if (input == "n" || input == "north")  return GO_NORTH;
+    else if (input == "e" || input == "east")   return GO_EAST;
+    else if (input == "s" || input == "south")  return GO_SOUTH;
+    else if (input == "w" || input == "west")   return GO_WEST;
+    return INVALID;
+}
+
+string Parser::toLowercase(string &input) {
+    int i = 0;
+    while(input[i]) {
+        input[i] = tolower(input[i]);
+        ++i;
+    }
+    return input;
+}

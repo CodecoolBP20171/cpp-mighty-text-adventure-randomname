@@ -3,9 +3,8 @@
 
 void Game::init()
 {
-    parser = InputParser();
     loadAreas();
-    std::cout << "Type \"h\" or \"help\" for help." << std::endl;
+    cout << "Type \"h\" or \"help\" for help." << endl;
 }
 
 void Game::loadAreas()
@@ -26,29 +25,36 @@ void Game::run()
 
 bool Game::step()
 {
-    std::string input;
-    cin >> input;
-    switch (parser.parseInput(input)) {
+    // Player input
+    string input;
+    getline(cin, input);
+
+    // Handle input
+    handleInput(input);
+
+    // Update screen
+
+    return true;
+}
+
+void Game::handleInput(string &input) {
+    switch (Parser::parseInput(input)) {
+        case HELP:
+            cout << "Help screen." << endl;
+            break;
         case GO_NORTH:
-            std::cout << "going north\n";
+            cout << "Going north." << endl;
             break;
         case GO_EAST:
-            std::cout << "going east\n";
+            cout << "Going east." << endl;
             break;
         case GO_SOUTH:
-        std::cout << "going south\n";
+            cout << "Going south." << endl;
             break;
         case GO_WEST:
-        std::cout << "going west\n";
-            break;
-        case HELP:
-            std::cout << "type \"n\" or \"north\" to go north,\n";
-            std::cout << "type \"e\" or \"east\" to go east,\n";
-            std::cout << "type \"s\" or \"south\" to go south,\n";
-            std::cout << "type \"w\" or \"west\" to go west,\n";
+            cout << "Going west." << endl;
             break;
         default:
-        std::cout << "Incorrect input! Type \"h\" or \"help\" for help." << std::endl;
+            cout << "Type \"h\" or \"help\" for help." << endl;
     }
-    return false;
 }

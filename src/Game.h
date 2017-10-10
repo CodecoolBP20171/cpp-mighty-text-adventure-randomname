@@ -3,7 +3,7 @@
 
 #include <vector>
 #include "Area.hpp"
-#include "InputParser.h"
+#include "Parser.h"
 
 using namespace std;
 
@@ -14,10 +14,10 @@ public:
 
 private:
     vector<Area> areas; // areas has only non-changeable information
-    InputParser parser;
 
     void loadAreas();
     bool step();
+    void handleInput(string& input);
 };
 
 
