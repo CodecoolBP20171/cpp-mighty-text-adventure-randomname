@@ -25,11 +25,21 @@ public:
 
     Item pickUpItem(); // Parameter is undecided
 
+    void setNorthernRoom(Room room) { toNorth = &room; }
+    void setEasternRoom(Room room) { toEast = &room; }
+    void setSouthernRoom(Room room) { toSouth = &room; }
+    void setWesternRoom(Room room) { toWest = &room; }
+
+    Room* getNorthernRoom() { return toNorth; }
+    Room* getEasternRoom() { return toEast; }
+    Room* getSouthernRoom() { return toSouth; }
+    Room* getWesternRoom() { return toWest; }
+
 private:
-    const Room *toNorth;
-    const Room *toEast;
-    const Room *toSouth;
-    const Room *toWest;
+    Room *toNorth;
+    Room *toEast;
+    Room *toSouth;
+    Room *toWest;
     const Area *areaType;
     vector<Item> items;
 

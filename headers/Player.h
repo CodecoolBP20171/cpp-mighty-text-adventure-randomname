@@ -7,6 +7,7 @@
 
 #include "Inventory.h"
 #include "Room.h"
+#include "InputType.h"
 
 class Player {
 public:
@@ -19,6 +20,8 @@ public:
     void changeHealth(int value) { currentHealth += value; }
 
     bool isAlive() { return currentHealth > 0; }
+
+    void move(InputType &direction);
 private:
     int currentHealth;
     const int maxHealth;
