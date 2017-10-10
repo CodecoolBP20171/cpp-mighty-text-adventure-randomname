@@ -12,6 +12,7 @@ class Area
 {
 public:
     Area(const string& description) : description(description) {}
+    const string getDescription() const { return description; }
 
 private:
 
