@@ -22,3 +22,12 @@ void Inventory::addItem(Item &newItem) {
 bool Inventory::isOverEncumbered() {
     return currentWeight > capacity;
 }
+
+vector<Item> Inventory::getItems() {
+    return items;
+}
+
+void Inventory::removeItem(int index) {
+    currentWeight -= items[index].getWeight();
+    items.erase(items.begin()+index);
+}

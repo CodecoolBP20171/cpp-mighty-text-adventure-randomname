@@ -13,7 +13,8 @@ class Inventory {
 public:
     Inventory(int capacity);
     void addItem(Item &newItem);
-    Item removeItem(); // Parameter is undecided
+    void removeItem(int index); // Parameter is undecided
+    vector<Item> getItems();
     bool isOverEncumbered();
 
 

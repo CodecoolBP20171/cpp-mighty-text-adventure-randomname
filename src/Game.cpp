@@ -48,7 +48,8 @@ void Game::run()
 bool Game::step()
 {
     // Player input
-    string input;
+    cin.clear();
+    string input = "";
     getline(cin, input);
 
     // Handle input
@@ -63,8 +64,7 @@ bool Game::step()
 }
 
 void Game::handleInput(string &input) {
-    InputType convInput = Parser::parseInput(input);
-    switch (convInput) {
+    switch (Parser::parseInput(input)) {
         case HELP:
             cout << "\tMove to north, type: 'n' or 'north'.\n"
                     "\tMove to south, type: 's' or 'south'.\n"
@@ -86,6 +86,10 @@ void Game::handleInput(string &input) {
             break;
         case PICK_UP_ITEM:
             player.pickUpItems();
+            break;
+        case DROP_ITEM:
+            player.dropItem();
+            break;
         default:
             cout << "Type \"h\" or \"help\" for help." << endl;
     }
