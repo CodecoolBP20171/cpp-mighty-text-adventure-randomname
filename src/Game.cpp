@@ -11,7 +11,7 @@ void Game::init()
     player.setCurrentRoom(*firstRoom);
     (*firstRoom).printRoom();
 
-    cout << "Type \"h\" or \"help\" for help." << endl;
+    cout << R"(Type "h" or "help" for help.)" << endl;
 }
 
 void Game::loadAreas()
@@ -48,7 +48,7 @@ void Game::run()
 bool Game::step()
 {
     // Player input
-    string input = "";
+    string input;
     getline(cin, input);
 
     // Handle input
@@ -58,8 +58,6 @@ bool Game::step()
     player.getCurrentRoom().printRoom();
 
     return player.getCurrentRoomPointer() == lastRoom;
-
-    return false;
 }
 
 void Game::handleInput(string &input) {
@@ -69,7 +67,8 @@ void Game::handleInput(string &input) {
                     "\tMove to south, type: 's' or 'south'.\n"
                     "\tMove to west, type: 'w' or 'west'.\n"
                     "\tMove to east, type: 'e' or 'east'.\n"
-                    "\tPick up items, type: 'p' or 'pick'." << endl;
+                    "\tPick up items, type: 'p' or 'pick'.\n"
+                    "\tDrop items, type: 'd' or 'drop'.\n" << endl;
             break;
         case GO_NORTH:
             player.move(GO_NORTH);
@@ -90,7 +89,7 @@ void Game::handleInput(string &input) {
             player.dropItem();
             break;
         default:
-            cout << "Type \"h\" or \"help\" for help." << endl;
+            cout << R"(Type "h" or "help" for help.)" << endl;
     }
 }
 
@@ -108,6 +107,6 @@ void Game::loadItemNames() {
 
 void Game::loadItemWeights() {
     itemWeights.emplace_back(ItemWeight(11));
-    itemWeights.emplace_back(ItemWeight(5));
-    itemWeights.emplace_back(ItemWeight(10));
+    itemWeights.emplace_back(ItemWeight(12));
+    itemWeights.emplace_back(ItemWeight(15));
 }
