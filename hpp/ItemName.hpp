@@ -13,7 +13,7 @@ class ItemName {
 public:
     ItemName(const string& name) : name(name) {}
 
-    string getName() { return name; }
+    string getName() const { return name; }
 
 private:
     string name;

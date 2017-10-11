@@ -7,7 +7,7 @@
 
 
 #include <iostream>
-#include "InputType.h"
+#include "../enum/InputType.h"
 
 using namespace std;
 

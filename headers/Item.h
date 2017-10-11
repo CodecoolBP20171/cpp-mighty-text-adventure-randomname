@@ -6,18 +6,23 @@
 #define CPP_2ND_TW_MIGHTY_TEXT_ADVENTURE_ITEM_H
 
 #include <string>
+#include "../hpp/ItemName.hpp"
+#include "../hpp/ItemDescription.hpp"
+#include "../hpp/ItemWeight.hpp"
+
+using namespace std;
 
 class Item {
 public:
-    Item(std::string name, std::string description, int weight);
-    std::string getName() { return name; }
-    std::string getDescription() { return description; }
-    int getWeight() { return weight; }
+    Item(ItemName &name, ItemDescription &desc, ItemWeight &weight);
+    const string getName() { return name->getName(); }
+    const string getDescription() { return description->getDescription(); }
+    const int getWeight() { return weight->getWeight(); }
 
 private:
-    const std::string name;
-    const std::string description;
-    const int weight;
+    const ItemName *name;
+    const ItemDescription *description;
+    const ItemWeight *weight;
 };
 
 

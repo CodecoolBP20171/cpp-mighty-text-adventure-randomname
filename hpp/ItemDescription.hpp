@@ -13,7 +13,7 @@ class ItemDescription {
 public:
     ItemDescription(const string& desc) : desc(desc) {}
 
-    string getDescription() { return desc; }
+    string getDescription() const { return desc; }
 
 private:
     string desc;

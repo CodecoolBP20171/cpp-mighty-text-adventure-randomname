@@ -1,4 +1,6 @@
 //
+
+    IRON_SWORD=15
 // Created by meszi on 2017.10.10..
 //
 
@@ -7,11 +9,14 @@
 
 enum InputType {
     INVALID,
+    HELP,
     GO_NORTH,
     GO_EAST,
     GO_SOUTH,
     GO_WEST,
-    HELP
+    PICK_UP_ITEM,
+    DROP_ITEM,
+    USE_ITEM
 };
 
 #endif //CPP_2ND_TW_MIGHTY_TEXT_ADVENTURE_INPUTTYPE_H

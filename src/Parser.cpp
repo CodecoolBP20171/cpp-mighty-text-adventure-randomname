@@ -11,6 +11,7 @@ InputType Parser::parseInput(string &input) {
     else if (input == "e" || input == "east")   return GO_EAST;
     else if (input == "s" || input == "south")  return GO_SOUTH;
     else if (input == "w" || input == "west")   return GO_WEST;
+    else if (input == "p" || input == "pick")   return PICK_UP_ITEM;
     return INVALID;
 }
 

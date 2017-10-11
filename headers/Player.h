@@ -7,13 +7,13 @@
 
 #include "Inventory.h"
 #include "Room.h"
-#include "InputType.h"
+#include "../enum/InputType.h"
 
 class Player {
 public:
     Player();
 
-    void pickUpItem(Item &newItem);
+    void pickUpItems();
 
     Item dropItem(); // Parameter undecided
 

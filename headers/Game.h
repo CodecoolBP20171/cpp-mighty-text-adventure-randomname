@@ -2,11 +2,13 @@
 #define CPP_2ND_TW_MIGHTY_TEXT_ADVENTURE_GAME_H
 
 #include <vector>
-#include "Area.hpp"
+#include "../hpp/Area.hpp"
 #include "Parser.h"
 #include "Room.h"
 #include "Player.h"
-#include "ItemDescription.hpp"
+#include "../hpp/ItemDescription.hpp"
+#include "../hpp/ItemName.hpp"
+#include "../hpp/ItemWeight.hpp"
 
 using namespace std;
 
@@ -18,13 +20,18 @@ public:
 
 private:
     vector<Area> areas; // areas has only non-changeable information
-    vector<ItemDes> itemDescriptions
+    vector<ItemDescription> itemDescriptions;
+    vector<ItemName> itemNames;
+    vector<ItemWeight> itemWeights;
     vector<Room> rooms;
     Room *firstRoom;
     Room *lastRoom;
     Player player;
 
     void loadAreas();
+    void loadItemDescs();
+    void loadItemNames();
+    void loadItemWeights();
     void loadRooms();
     bool step();
     void handleInput(string& input);

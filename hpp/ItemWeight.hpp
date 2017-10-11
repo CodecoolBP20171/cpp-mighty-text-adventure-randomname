@@ -9,7 +9,7 @@ class ItemWeight {
 public:
     ItemWeight(const int& weight) : weight(weight) {}
 
-    int getWeight() { return weight; }
+    int getWeight() const { return weight; }
 
 private:
     int weight;

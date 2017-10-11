@@ -4,9 +4,9 @@
 
 #include "../headers/Item.h"
 
-Item::Item(std::string name, std::string description, int weight) :
-        name(name),
-        description(description),
-        weight(weight){
+Item::Item(ItemName &name, ItemDescription &desc, ItemWeight &weight) :
+        name(&name),
+        description(&desc),
+        weight(&weight){
 
 }

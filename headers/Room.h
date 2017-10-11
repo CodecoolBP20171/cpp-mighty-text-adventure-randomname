@@ -8,7 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Area.hpp"
+#include "../hpp/Area.hpp"
 #include "Item.h"
 
 using namespace std;

@@ -8,12 +8,12 @@ Player::Player() :
         // Magic numbers are arbitrary
         maxHealth(10),
         currentHealth(10),
-        inventory(100) {
+        inventory(Inventory(10)) {
 
 }
 
-void Player::pickUpItem(Item &newItem) {
-    inventory.addItem(newItem);
+void Player::pickUpItem() {
+    //
 }
 
 void Player::move(const InputType &direction) {

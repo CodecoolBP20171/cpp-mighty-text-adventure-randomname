@@ -4,6 +4,9 @@
 void Game::init()
 {
     loadAreas();
+    loadItemWeights();
+    loadItemNames();
+    loadItemDescs();
     loadRooms();
     player.setCurrentRoom(*firstRoom);
     (*firstRoom).printRoom();
@@ -24,9 +27,11 @@ void Game::loadRooms() {
     rooms.emplace_back(Room(areas[2]));
 
     rooms[0].setNorthernRoom(rooms[1]);
+    rooms[0].placeItem(Item(itemNames[1], itemDescriptions[1], itemWeights[1]));
 
     rooms[1].setSouthernRoom(rooms[0]);
     rooms[1].setNorthernRoom(rooms[2]);
+    rooms[1].placeItem(Item(itemNames[0], itemDescriptions[0], itemWeights[0]));
 
     rooms[2].setSouthernRoom(rooms[1]);
 
@@ -75,7 +80,27 @@ void Game::handleInput(string &input) {
         case GO_WEST:
             player.move(GO_WEST);
             break;
+        case PICK_UP_ITEM:
+
         default:
             cout << "Type \"h\" or \"help\" for help." << endl;
     }
+}
+
+void Game::loadItemDescs() {
+    itemDescriptions.emplace_back(ItemDescription("It's a key!"));
+    itemDescriptions.emplace_back(ItemDescription("It's a sword!"));
+    itemDescriptions.emplace_back(ItemDescription("It's an armor!"));
+}
+
+void Game::loadItemNames() {
+    itemNames.emplace_back(ItemName("Golden key"));
+    itemNames.emplace_back(ItemName("Iron sword"));
+    itemNames.emplace_back(ItemName("Leather chestplate"));
+}
+
+void Game::loadItemWeights() {
+    itemWeights.emplace_back(ItemWeight(1));
+    itemWeights.emplace_back(ItemWeight(5));
+    itemWeights.emplace_back(ItemWeight(10));
 }
