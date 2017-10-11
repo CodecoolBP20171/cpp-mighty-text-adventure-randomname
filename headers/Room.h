@@ -23,7 +23,9 @@ public:
 
     void placeItem(Item newItem);
 
-    Item pickUpItem(); // Parameter is undecided
+    vector<Item> getItems() { return items; }
+
+    void clearItems() { items.clear(); }
 
     void setNorthernRoom(Room& room) { toNorth = &room; }
     void setEasternRoom(Room& room) { toEast = &room; }

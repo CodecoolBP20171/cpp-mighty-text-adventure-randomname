@@ -12,8 +12,12 @@ Player::Player() :
 
 }
 
-void Player::pickUpItem() {
-    //
+void Player::pickUpItems() {
+    vector<Item> newItems = currentRoom->getItems();
+    currentRoom->clearItems();
+    for (Item item : newItems) {
+        inventory.addItem(item);
+    }
 }
 
 void Player::move(const InputType &direction) {

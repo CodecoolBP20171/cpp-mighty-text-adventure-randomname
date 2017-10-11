@@ -1,6 +1,4 @@
 //
-
-    IRON_SWORD=15
 // Created by meszi on 2017.10.10..
 //
 

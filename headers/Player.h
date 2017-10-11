@@ -15,6 +15,8 @@ public:
 
     void pickUpItems();
 
+    void pickUpItem(Item& newItem);
+
     Item dropItem(); // Parameter undecided
 
     void changeHealth(int value) { currentHealth += value; }

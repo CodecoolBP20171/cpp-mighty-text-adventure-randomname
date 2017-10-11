@@ -28,10 +28,10 @@ void Game::loadRooms() {
 
     rooms[0].setNorthernRoom(rooms[1]);
     rooms[0].placeItem(Item(itemNames[1], itemDescriptions[1], itemWeights[1]));
+    rooms[0].placeItem(Item(itemNames[0], itemDescriptions[0], itemWeights[0]));
 
     rooms[1].setSouthernRoom(rooms[0]);
     rooms[1].setNorthernRoom(rooms[2]);
-    rooms[1].placeItem(Item(itemNames[0], itemDescriptions[0], itemWeights[0]));
 
     rooms[2].setSouthernRoom(rooms[1]);
 
@@ -81,7 +81,7 @@ void Game::handleInput(string &input) {
             player.move(GO_WEST);
             break;
         case PICK_UP_ITEM:
-
+            player.pickUpItems();
         default:
             cout << "Type \"h\" or \"help\" for help." << endl;
     }
