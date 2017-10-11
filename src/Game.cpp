@@ -66,7 +66,11 @@ void Game::handleInput(string &input) {
     InputType convInput = Parser::parseInput(input);
     switch (convInput) {
         case HELP:
-            cout << "Help screen." << endl;
+            cout << "\tMove to north, type: 'n' or 'north'.\n"
+                    "\tMove to south, type: 's' or 'south'.\n"
+                    "\tMove to west, type: 'w' or 'west'.\n"
+                    "\tMove to east, type: 'e' or 'east'.\n"
+                    "\tPick up items, type: 'p' or 'pick'." << endl;
             break;
         case GO_NORTH:
             player.move(GO_NORTH);
