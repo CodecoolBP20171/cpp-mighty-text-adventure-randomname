@@ -104,7 +104,7 @@ void Game::loadItemNames() {
 }
 
 void Game::loadItemWeights() {
-    itemWeights.emplace_back(ItemWeight(1));
+    itemWeights.emplace_back(ItemWeight(11));
     itemWeights.emplace_back(ItemWeight(5));
     itemWeights.emplace_back(ItemWeight(10));
 }

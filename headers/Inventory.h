@@ -14,6 +14,7 @@ public:
     Inventory(int capacity);
     void addItem(Item &newItem);
     Item removeItem(); // Parameter is undecided
+    bool isOverEncumbered();
 
 
 private:

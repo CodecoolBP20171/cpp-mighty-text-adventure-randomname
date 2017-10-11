@@ -21,6 +21,9 @@ void Player::pickUpItems() {
 }
 
 void Player::move(const InputType &direction) {
+    if (inventory.isOverEncumbered()) {
+        return;
+    }
     switch (direction) {
         case GO_NORTH:
             if ((*currentRoom).getNorthernRoom() != nullptr) {

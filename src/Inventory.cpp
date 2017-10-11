@@ -18,3 +18,7 @@ void Inventory::addItem(Item &newItem) {
         std::cout << "Current weight: " << currentWeight << "/" << capacity << std::endl;
     }
 }
+
+bool Inventory::isOverEncumbered() {
+    return currentWeight > capacity;
+}
