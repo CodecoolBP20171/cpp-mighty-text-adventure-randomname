@@ -4,12 +4,11 @@
 
 #include "../headers/Player.h"
 
-Player::Player(Room &startingRoom) :
+Player::Player() :
         // Magic numbers are arbitrary
         maxHealth(10),
         currentHealth(10),
-        inventory(100),
-        currentRoom(&startingRoom) {
+        inventory(100) {
 
 }
 
@@ -17,19 +16,31 @@ void Player::pickUpItem(Item &newItem) {
     inventory.addItem(newItem);
 }
 
-void Player::move(InputType &direction) {
+void Player::move(const InputType &direction) {
     switch (direction) {
         case GO_NORTH:
-            currentRoom = (*currentRoom).getNorthernRoom();
+            if ((*currentRoom).getNorthernRoom() != nullptr) {
+                currentRoom = (*currentRoom).getNorthernRoom();
+            }
             return;
         case GO_EAST:
-            currentRoom = (*currentRoom).getEasternRoom();
+            if ((*currentRoom).getEasternRoom() != nullptr) {
+                currentRoom = (*currentRoom).getEasternRoom();
+            }
             return;
         case GO_SOUTH:
-            currentRoom = (*currentRoom).getSouthernRoom();
+            if ((*currentRoom).getSouthernRoom() != nullptr) {
+                currentRoom = (*currentRoom).getSouthernRoom();
+            }
             return;
         case GO_WEST:
-            currentRoom = (*currentRoom).getWesternRoom();
+            if ((*currentRoom).getWesternRoom() != nullptr) {
+                currentRoom = (*currentRoom).getWesternRoom();
+            }
             return;
     }
+}
+
+void Player::setCurrentRoom(Room& room) {
+    currentRoom = &room;
 }

@@ -25,10 +25,10 @@ public:
 
     Item pickUpItem(); // Parameter is undecided
 
-    void setNorthernRoom(Room room) { toNorth = &room; }
-    void setEasternRoom(Room room) { toEast = &room; }
-    void setSouthernRoom(Room room) { toSouth = &room; }
-    void setWesternRoom(Room room) { toWest = &room; }
+    void setNorthernRoom(Room& room) { toNorth = &room; }
+    void setEasternRoom(Room& room) { toEast = &room; }
+    void setSouthernRoom(Room& room) { toSouth = &room; }
+    void setWesternRoom(Room& room) { toWest = &room; }
 
     Room* getNorthernRoom() { return toNorth; }
     Room* getEasternRoom() { return toEast; }

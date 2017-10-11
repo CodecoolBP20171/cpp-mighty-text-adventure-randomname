@@ -11,7 +11,7 @@
 
 class Player {
 public:
-    Player(Room &startingRoom);
+    Player();
 
     void pickUpItem(Item &newItem);
 
@@ -21,7 +21,11 @@ public:
 
     bool isAlive() { return currentHealth > 0; }
 
-    void move(InputType &direction);
+    void move(const InputType &direction);
+
+    void setCurrentRoom(Room& room);
+
+    Room getCurrentRoom() { return *currentRoom; }
 private:
     int currentHealth;
     const int maxHealth;
