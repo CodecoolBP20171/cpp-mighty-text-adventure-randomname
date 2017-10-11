@@ -33,10 +33,13 @@ void Player::dropItem() {
     if (cin.fail() || itemToDropIndex < 1 || itemToDropIndex > itemsNumber) {
         cout << "Incorrect input" << endl;
         cin.clear();
+        cin.ignore(255, '\n');
     } else {
         Item itemToDrop = items[itemToDropIndex-1];
         currentRoom->placeItem(itemToDrop);
         inventory.removeItem(itemToDropIndex-1);
+        cin.clear();
+        cin.ignore(255, '\n');
     }
 }
 

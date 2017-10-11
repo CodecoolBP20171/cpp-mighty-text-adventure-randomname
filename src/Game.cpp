@@ -48,7 +48,6 @@ void Game::run()
 bool Game::step()
 {
     // Player input
-    cin.clear();
     string input = "";
     getline(cin, input);
 
