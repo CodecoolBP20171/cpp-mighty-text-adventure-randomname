@@ -26,6 +26,8 @@ public:
     void setCurrentRoom(Room& room);
 
     Room getCurrentRoom() { return *currentRoom; }
+    
+    Room* getCurrentRoomPointer() { return currentRoom; }
 private:
     int currentHealth;
     const int maxHealth;

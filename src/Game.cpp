@@ -52,6 +52,8 @@ bool Game::step()
     // Update screen
     player.getCurrentRoom().printRoom();
 
+    return player.getCurrentRoomPointer() == lastRoom;
+
     return false;
 }
 
