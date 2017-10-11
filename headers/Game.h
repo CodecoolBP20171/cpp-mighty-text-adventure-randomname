@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include "Room.h"
 #include "Player.h"
+#include "ItemDescription.hpp"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ public:
 
 private:
     vector<Area> areas; // areas has only non-changeable information
+    vector<ItemDes> itemDescriptions
     vector<Room> rooms;
     Room *firstRoom;
     Room *lastRoom;
