@@ -24,6 +24,7 @@ void Room::printRoom() {
         for (Item item : items) {
             itemsString += " a(n) " + item.getName() + ",";
         }
+        itemsString.replace(itemsString.rfind(','), 1, "");
         itemsString += ".";
         cout << itemsString << endl;
     }
@@ -39,6 +40,9 @@ void Room::printRoom() {
     }
     if (toWest != nullptr) {
         movementOptions += " west";
+    }
+    if (movementOptions.back() == ',') {
+        movementOptions.replace(movementOptions.rfind(','), 1, "");
     }
     movementOptions += ".";
     cout << movementOptions << endl;
