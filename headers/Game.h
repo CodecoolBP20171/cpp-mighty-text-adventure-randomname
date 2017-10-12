@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include "Room.h"
 #include "Player.h"
+#include "Inventory.h"
 #include "../hpp/ItemName.hpp"
 #include "../hpp/ItemWeight.hpp"
 

@@ -67,7 +67,8 @@ void Game::handleInput(string &input) {
                     "\tMove to west, type: 'w' or 'west'.\n"
                     "\tMove to east, type: 'e' or 'east'.\n"
                     "\tPick up items, type: 'p' or 'pick'.\n"
-                    "\tDrop items, type: 'd' or 'drop'.\n" << endl;
+                    "\tDrop items, type: 'd' or 'drop'.\n"
+                    "\tList items, type: 'l' or 'list'.\n" << endl;
             break;
         case GO_NORTH:
             player.move(GO_NORTH);
@@ -87,6 +88,8 @@ void Game::handleInput(string &input) {
         case DROP_ITEM:
             player.dropItem();
             break;
+        case LIST_ITEMS:
+            player.showInventory();
         default:
             cout << "\nType \"h\" or \"help\" for help.\n\n";
     }

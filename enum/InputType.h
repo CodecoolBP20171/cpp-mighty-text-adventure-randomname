@@ -14,7 +14,8 @@ enum InputType {
     GO_WEST,
     PICK_UP_ITEM,
     DROP_ITEM,
-    USE_ITEM
+    USE_ITEM,
+    LIST_ITEMS
 };
 
 #endif //CPP_2ND_TW_MIGHTY_TEXT_ADVENTURE_INPUTTYPE_H

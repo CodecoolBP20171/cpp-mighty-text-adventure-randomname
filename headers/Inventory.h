@@ -17,6 +17,7 @@ public:
     vector<Item> getItems();
     bool isOverEncumbered();
     void printOutWeight();
+    void listInventory();
 
 
 private:

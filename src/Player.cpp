@@ -23,26 +23,26 @@ void Player::pickUpItems() {
 
 void Player::dropItem() {
     cout << "What do you want to drop?" << endl;
-    vector<Item> items = inventory.getItems();
-    int itemsNumber = items.size();
-    for (int i = 0; i < itemsNumber ; ++i) {
-        cout << i+1 << ". " << items[i].getName() << "\n\tWeight: " << items[i].getWeight() << endl;
-    }
+    inventory.listInventory();
     cout << "Type the index of an item you wat to drop." << endl;
     int itemToDropIndex;
     cin >> itemToDropIndex;
-    if (cin.fail() || itemToDropIndex < 1 || itemToDropIndex > itemsNumber) {
+    if (cin.fail() || itemToDropIndex < 1 || itemToDropIndex > inventory.getItems().size()) {
         cout << "Incorrect input" << endl;
         cin.clear();
         cin.ignore(255, '\n');
     } else {
-        Item itemToDrop = items[itemToDropIndex-1];
+        Item itemToDrop = inventory.getItems()[itemToDropIndex-1];
         currentRoom->placeItem(itemToDrop);
         inventory.removeItem(itemToDropIndex-1);
         cin.clear();
         cin.ignore(255, '\n');
     }
     inventory.printOutWeight();
+}
+
+void Player::showInventory() {
+    inventory.listInventory();
 }
 
 void Player::move(const InputType &direction) {

@@ -28,7 +28,7 @@ void Room::printRoom() {
         itemsString += ".";
         cout << itemsString << endl;
     }
-    string movementOptions = "\nFrom this room, you can exit towards:";
+    string movementOptions = "From this room, you can exit towards:";
     if (toNorth != nullptr) {
         movementOptions += " north,";
     }
