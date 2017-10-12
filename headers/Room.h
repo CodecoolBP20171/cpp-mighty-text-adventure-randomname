@@ -23,9 +23,9 @@ public:
 
     void placeItem(Item newItem);
 
-    vector<Item> getItems() { return items; }
+    void clearItem(int index);
 
-    void clearItems() { items.clear(); }
+    vector<Item> getItems() { return items; }
 
     void setNorthernRoom(Room& room) { toNorth = &room; }
     void setEasternRoom(Room& room) { toEast = &room; }

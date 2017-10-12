@@ -17,6 +17,10 @@ void Room::placeItem(Item newItem) {
     items.emplace_back(newItem);
 }
 
+void Room::clearItem(int index) {
+    items.erase(items.begin()+index);
+}
+
 void Room::printRoom() {
     cout << getDescription() << endl;
     if (!items.empty()) {

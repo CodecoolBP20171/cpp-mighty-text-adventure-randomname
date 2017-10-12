@@ -28,6 +28,8 @@ void Game::loadRooms() {
     rooms[0].setNorthernRoom(rooms[1]);
     rooms[0].placeItem(Item(itemNames[1], itemWeights[1]));
     rooms[0].placeItem(Item(itemNames[0], itemWeights[0]));
+    rooms[0].placeItem(Item(itemNames[1], itemWeights[1]));
+    rooms[0].placeItem(Item(itemNames[0], itemWeights[0]));
 
     rooms[1].setSouthernRoom(rooms[0]);
     rooms[1].setNorthernRoom(rooms[2]);

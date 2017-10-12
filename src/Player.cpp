@@ -13,11 +13,24 @@ Player::Player() :
 }
 
 void Player::pickUpItems() {
-    vector<Item> newItems = currentRoom->getItems();
-    currentRoom->clearItems();
-    for (Item item : newItems) {
-        inventory.addItem(item);
+    cout << "What do you want to pick up?" << endl;
+    vector<Item> items = currentRoom->getItems();
+    long itemNumber = items.size();
+    for (int i = 0; i < itemNumber; ++i) {
+        cout << i+1 << ". " << items[i].getName() << "\n\tWeight: " << items[i].getWeight() << endl;
     }
+    cout << "Type the index of an item you wat to pick up." << endl;
+    int itemToPickUpIndex;
+    cin >> itemToPickUpIndex;
+    if (cin.fail() || itemToPickUpIndex < 1 || itemToPickUpIndex > itemNumber) {
+        cout << "Incorrect input" << endl;
+    } else {
+        Item itemToPickUp = items[itemToPickUpIndex-1];
+        currentRoom->clearItem(itemToPickUpIndex-1);
+        inventory.addItem(itemToPickUp);
+    }
+    cin.clear();
+    cin.ignore(255, '\n');
     inventory.printOutWeight();
 }
 
@@ -29,15 +42,13 @@ void Player::dropItem() {
     cin >> itemToDropIndex;
     if (cin.fail() || itemToDropIndex < 1 || itemToDropIndex > inventory.getItems().size()) {
         cout << "Incorrect input" << endl;
-        cin.clear();
-        cin.ignore(255, '\n');
     } else {
         Item itemToDrop = inventory.getItems()[itemToDropIndex-1];
         currentRoom->placeItem(itemToDrop);
         inventory.removeItem(itemToDropIndex-1);
-        cin.clear();
-        cin.ignore(255, '\n');
     }
+    cin.clear();
+    cin.ignore(255, '\n');
     inventory.printOutWeight();
 }
 
