@@ -34,3 +34,10 @@ void Inventory::printOutWeight() {
         std::cout << "Current weight: " << currentWeight << "/" << capacity << "\n" << std::endl;
     }
 }
+
+void Inventory::listInventory() {
+    long itemsNumber = getItems().size();
+    for (int i = 0; i < itemsNumber ; ++i) {
+        cout << i+1 << ". " << items[i].getName() << "\n\tWeight: " << items[i].getWeight() << endl;
+    }
+}

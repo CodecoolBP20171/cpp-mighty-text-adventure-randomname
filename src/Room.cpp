@@ -24,6 +24,10 @@ void Room::placeItem(Item newItem) {
     items.emplace_back(newItem);
 }
 
+void Room::clearItem(int index) {
+    items.erase(items.begin()+index);
+}
+
 void Room::printRoom() {
     cout << getDescription() << endl;
     if (!items.empty()) {
@@ -35,7 +39,7 @@ void Room::printRoom() {
         itemsString += ".";
         cout << itemsString << endl;
     }
-    string movementOptions = "\nFrom this room, you can exit towards:";
+    string movementOptions = "From this room, you can exit towards:";
     if (toNorth != nullptr) {
         movementOptions += " north,";
     }

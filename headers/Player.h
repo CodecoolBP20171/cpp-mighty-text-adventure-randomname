@@ -19,6 +19,8 @@ public:
 
     void dropItem(); // Parameter undecided
 
+    void showInventory();
+
     void changeHealth(int value) { currentHealth += value; }
 
     bool isAlive() { return currentHealth > 0; }

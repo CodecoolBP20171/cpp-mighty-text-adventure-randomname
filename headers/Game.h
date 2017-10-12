@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include "Room.h"
 #include "Player.h"
+#include "Inventory.h"
 #include "../hpp/ItemName.hpp"
 #include "../hpp/ItemWeight.hpp"
 
@@ -16,9 +17,8 @@ public:
     Game(): player(Player()) {}
     void init();
     void run();
-    bool win = false;
-
 private:
+
     vector<Area> areas; // areas has only non-changeable information
     vector<ItemName> itemNames;
     vector<ItemWeight> itemWeights;
@@ -27,8 +27,8 @@ private:
     Room *lastRoom;
     Room *deathRoom;
     Player player;
-
     void loadAreas();
+
     void loadItemNames();
     void loadItemWeights();
     void loadRooms();
@@ -36,6 +36,9 @@ private:
     void handleInput(string& input);
     void connectRooms();
     void temainateObseleteConnections();
+    bool isGameLost = false;
+    void printWinMessage();
+    void printLoseMessage();
 };
 
 
