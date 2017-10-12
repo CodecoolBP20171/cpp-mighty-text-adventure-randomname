@@ -28,7 +28,7 @@ bool Inventory::isOverEncumbered() {
     return currentWeight > capacity;
 }
 
-void Inventory::printOutWeigth() {
+void Inventory::printOutWeight() {
     if (isOverEncumbered()) {
         std::cout << "\nYou are over encumbered and can't move.\nDrop some item to continue!\n";
         std::cout << "Current weight: " << currentWeight << "/" << capacity << "\n" << std::endl;

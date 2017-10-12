@@ -6,7 +6,6 @@
 #include "Parser.h"
 #include "Room.h"
 #include "Player.h"
-#include "../hpp/ItemDescription.hpp"
 #include "../hpp/ItemName.hpp"
 #include "../hpp/ItemWeight.hpp"
 
@@ -17,10 +16,10 @@ public:
     Game(): player(Player()) {}
     void init();
     void run();
+    bool win = false;
 
 private:
     vector<Area> areas; // areas has only non-changeable information
-    vector<ItemDescription> itemDescriptions;
     vector<ItemName> itemNames;
     vector<ItemWeight> itemWeights;
     vector<Room> rooms;
@@ -29,7 +28,6 @@ private:
     Player player;
 
     void loadAreas();
-    void loadItemDescs();
     void loadItemNames();
     void loadItemWeights();
     void loadRooms();

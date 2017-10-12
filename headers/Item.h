@@ -7,21 +7,18 @@
 
 #include <string>
 #include "../hpp/ItemName.hpp"
-#include "../hpp/ItemDescription.hpp"
 #include "../hpp/ItemWeight.hpp"
 
 using namespace std;
 
 class Item {
 public:
-    Item(ItemName &name, ItemDescription &desc, ItemWeight &weight);
+    Item(ItemName &name, ItemWeight &weight);
     const string getName() { return name->getName(); }
-    const string getDescription() { return description->getDescription(); }
     const int getWeight() { return weight->getWeight(); }
 
 private:
     const ItemName *name;
-    const ItemDescription *description;
     const ItemWeight *weight;
 };
 

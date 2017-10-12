@@ -6,7 +6,6 @@ void Game::init()
     loadAreas();
     loadItemWeights();
     loadItemNames();
-    loadItemDescs();
     loadRooms();
     cout << "\nType \"h\" or \"help\" for help.\n\n";
     player.setCurrentRoom(*firstRoom);
@@ -27,8 +26,8 @@ void Game::loadRooms() {
     rooms.emplace_back(Room(areas[2]));
 
     rooms[0].setNorthernRoom(rooms[1]);
-    rooms[0].placeItem(Item(itemNames[1], itemDescriptions[1], itemWeights[1]));
-    rooms[0].placeItem(Item(itemNames[0], itemDescriptions[0], itemWeights[0]));
+    rooms[0].placeItem(Item(itemNames[1], itemWeights[1]));
+    rooms[0].placeItem(Item(itemNames[0], itemWeights[0]));
 
     rooms[1].setSouthernRoom(rooms[0]);
     rooms[1].setNorthernRoom(rooms[2]);
@@ -93,20 +92,44 @@ void Game::handleInput(string &input) {
     }
 }
 
-void Game::loadItemDescs() {
-    itemDescriptions.emplace_back(ItemDescription("It's a key!"));
-    itemDescriptions.emplace_back(ItemDescription("It's a sword!"));
-    itemDescriptions.emplace_back(ItemDescription("It's an armor!"));
-}
 
 void Game::loadItemNames() {
     itemNames.emplace_back(ItemName("Golden key"));
-    itemNames.emplace_back(ItemName("Iron sword"));
+    itemNames.emplace_back(ItemName("Silver key"));
     itemNames.emplace_back(ItemName("Leather chestplate"));
+    itemNames.emplace_back(ItemName("Leather boots"));
+    itemNames.emplace_back(ItemName("Leather gloves"));
+    itemNames.emplace_back(ItemName("Leather legplate"));
+    itemNames.emplace_back(ItemName("Leather hat"));
+    itemNames.emplace_back(ItemName("Iron sword"));
+    itemNames.emplace_back(ItemName("Shield"));
+    itemNames.emplace_back(ItemName("Wooden bow"));
+    itemNames.emplace_back(ItemName("Arrows"));
+    itemNames.emplace_back(ItemName("Knife"));
+    itemNames.emplace_back(ItemName("Human skeleton"));
+    itemNames.emplace_back(ItemName("Demon skull"));
+    itemNames.emplace_back(ItemName("Chains"));
+    itemNames.emplace_back(ItemName("Unidentified eyeball"));
+    itemNames.emplace_back(ItemName("Old book"));
 }
 
 void Game::loadItemWeights() {
-    itemWeights.emplace_back(ItemWeight(11));
-    itemWeights.emplace_back(ItemWeight(12));
-    itemWeights.emplace_back(ItemWeight(15));
+    itemWeights.emplace_back(ItemWeight(1));
+    itemWeights.emplace_back(ItemWeight(1));
+    itemWeights.emplace_back(ItemWeight(3));
+    itemWeights.emplace_back(ItemWeight(3));
+    itemWeights.emplace_back(ItemWeight(3));
+    itemWeights.emplace_back(ItemWeight(3));
+    itemWeights.emplace_back(ItemWeight(2));
+    itemWeights.emplace_back(ItemWeight(5));
+    itemWeights.emplace_back(ItemWeight(3));
+    itemWeights.emplace_back(ItemWeight(3));
+    itemWeights.emplace_back(ItemWeight(2));
+    itemWeights.emplace_back(ItemWeight(2));
+    itemWeights.emplace_back(ItemWeight(6));
+    itemWeights.emplace_back(ItemWeight(4));
+    itemWeights.emplace_back(ItemWeight(8));
+    itemWeights.emplace_back(ItemWeight(0));
+    itemWeights.emplace_back(ItemWeight(0));
+    itemWeights.emplace_back(ItemWeight(7));
 }

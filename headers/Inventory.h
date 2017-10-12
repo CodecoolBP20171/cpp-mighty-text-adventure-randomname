@@ -16,7 +16,7 @@ public:
     void removeItem(int index); // Parameter is undecided
     vector<Item> getItems();
     bool isOverEncumbered();
-    void printOutWeigth();
+    void printOutWeight();
 
 
 private:

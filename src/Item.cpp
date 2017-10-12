@@ -4,9 +4,8 @@
 
 #include "../headers/Item.h"
 
-Item::Item(ItemName &name, ItemDescription &desc, ItemWeight &weight) :
+Item::Item(ItemName &name, ItemWeight &weight) :
         name(&name),
-        description(&desc),
         weight(&weight){
 
 }

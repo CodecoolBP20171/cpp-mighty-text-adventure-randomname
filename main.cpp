@@ -53,8 +53,7 @@ int main() {
     Game game;
     game.init();
     game.run();
-    printWinMessage();
-    printLoseMessage();
+    game.win ? printWinMessage() : printLoseMessage();
 
     cout << "Exiting from Mighty Text Adventure!" << endl;
     return 0;
