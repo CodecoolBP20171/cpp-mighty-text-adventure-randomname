@@ -8,10 +8,10 @@ void Game::init()
     loadItemNames();
     loadItemDescs();
     loadRooms();
+    cout << "\nType \"h\" or \"help\" for help.\n\n";
     player.setCurrentRoom(*firstRoom);
     (*firstRoom).printRoom();
 
-    cout << R"(Type "h" or "help" for help.)" << endl;
 }
 
 void Game::loadAreas()
@@ -89,7 +89,7 @@ void Game::handleInput(string &input) {
             player.dropItem();
             break;
         default:
-            cout << R"(Type "h" or "help" for help.)" << endl;
+            cout << "\nType \"h\" or \"help\" for help.\n\n";
     }
 }
 

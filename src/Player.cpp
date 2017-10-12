@@ -18,6 +18,7 @@ void Player::pickUpItems() {
     for (Item item : newItems) {
         inventory.addItem(item);
     }
+    inventory.printOutWeigth();
 }
 
 void Player::dropItem() {
@@ -41,6 +42,7 @@ void Player::dropItem() {
         cin.clear();
         cin.ignore(255, '\n');
     }
+    inventory.printOutWeigth();
 }
 
 void Player::move(const InputType &direction) {

@@ -20,7 +20,7 @@ void Room::placeItem(Item newItem) {
 void Room::printRoom() {
     cout << getDescription() << endl;
     if (!items.empty()) {
-        string itemsString = "On the ground, there is";
+        string itemsString = "\nOn the ground, there is";
         for (Item item : items) {
             itemsString += " a(n) " + item.getName() + ",";
         }
@@ -28,7 +28,7 @@ void Room::printRoom() {
         itemsString += ".";
         cout << itemsString << endl;
     }
-    string movementOptions = "From this room, you can exit towards:";
+    string movementOptions = "\nFrom this room, you can exit towards:";
     if (toNorth != nullptr) {
         movementOptions += " north,";
     }
