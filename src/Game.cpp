@@ -9,7 +9,8 @@ void Game::init()
     loadRooms();
     connectRooms();
     removeObseleteConnections();
-    cout << "\nType \"h\" or \"help\" for help.\n\n";
+    placeInitialItems();
+    cout << "Type \"h\" or \"help\" for help.\n";
     player.setCurrentRoom(*firstRoom);
     firstRoom->printRoom();
 
@@ -18,6 +19,8 @@ void Game::init()
 void Game::run()
 {
     while(step());
+    cout << "...";
+    cin.get();
     isGameWon ? printWinMessage() : printLoseMessage();
 }
 
@@ -97,29 +100,20 @@ void Game::loadItemNames() {
 }
 
 void Game::loadItemWeights() {
+    itemWeights.emplace_back(ItemWeight(0));
     itemWeights.emplace_back(ItemWeight(1));
-    itemWeights.emplace_back(ItemWeight(1));
-    itemWeights.emplace_back(ItemWeight(3));
-    itemWeights.emplace_back(ItemWeight(3));
-    itemWeights.emplace_back(ItemWeight(3));
-    itemWeights.emplace_back(ItemWeight(3));
     itemWeights.emplace_back(ItemWeight(2));
-    itemWeights.emplace_back(ItemWeight(5));
     itemWeights.emplace_back(ItemWeight(3));
-    itemWeights.emplace_back(ItemWeight(3));
-    itemWeights.emplace_back(ItemWeight(2));
-    itemWeights.emplace_back(ItemWeight(2));
-    itemWeights.emplace_back(ItemWeight(6));
     itemWeights.emplace_back(ItemWeight(4));
-    itemWeights.emplace_back(ItemWeight(8));
-    itemWeights.emplace_back(ItemWeight(0));
-    itemWeights.emplace_back(ItemWeight(0));
+    itemWeights.emplace_back(ItemWeight(5));
+    itemWeights.emplace_back(ItemWeight(6));
     itemWeights.emplace_back(ItemWeight(7));
+    itemWeights.emplace_back(ItemWeight(8));
 }
 
 void Game::loadAreas()
 {
-    areas.emplace_back(Area("You stumble inside a forest. the trees are dense, but you can make out a path."));
+    areas.emplace_back(Area("You stumble inside a forest. The trees are dense, but you can make out a path."));
     areas.emplace_back(Area("This meadow is is vast and filled with creatures you've never seen before."));
     areas.emplace_back(Area("You find the remains of a once great castle. There is not a single living thing here."));
     areas.emplace_back(Area("You see the entrance to a cave, but it's much too dark inside, you don't have a torch."));
@@ -158,6 +152,15 @@ void Game::loadRooms() {
     firstRoom = &rooms[0];
     lastRoom = &rooms[20];
     deathRoom = &rooms[10];
+}
+
+void Game::placeInitialItems() {
+    srand(time(0));
+    for (Room& room : rooms) {
+        int rndNameIdx = rand() % itemNames.size();
+        int rndWeightIdx = rand() % itemWeights.size();
+        room.placeItem(Item(itemNames[rndNameIdx], itemWeights[rndWeightIdx]));
+    }
 }
 
 void Game::printWinMessage() {
@@ -214,10 +217,12 @@ void Game::connectRooms() {
                     // J is to the south of I
                     rooms[i].setSouthernRoom(rooms[j]);
                     rooms[j].setNorthernRoom(rooms[i]);
+                    continue;
                 } else if (rooms[i].getY() == rooms[j].getY() + 1) {
                     // J is to the north of I
                     rooms[i].setNorthernRoom(rooms[j]);
                     rooms[j].setSouthernRoom(rooms[i]);
+                    continue;
                 }
             }
             if (rooms[i].getY() == rooms[j].getY()) {
@@ -225,10 +230,12 @@ void Game::connectRooms() {
                     // J is to the east of I
                     rooms[i].setEasternRoom(rooms[j]);
                     rooms[j].setWesternRoom(rooms[i]);
+                    continue;
                 } else if (rooms[i].getX() == rooms[j].getX() + 1) {
                     // J is to the west of I
                     rooms[i].setWesternRoom(rooms[j]);
                     rooms[j].setEasternRoom(rooms[i]);
+                    continue;
                 }
             }
 

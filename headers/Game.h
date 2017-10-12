@@ -27,18 +27,19 @@ private:
     Room *lastRoom;
     Room *deathRoom;
     Player player;
-    void loadAreas();
+    bool isGameWon = false;
 
+    void loadAreas();
     void loadItemNames();
     void loadItemWeights();
     void loadRooms();
     bool step();
     void handleInput(string& input);
     void connectRooms();
-    bool isGameWon = false;
     void printWinMessage();
     void printLoseMessage();
     void removeObseleteConnections();
+    void placeInitialItems();
 };
 
 

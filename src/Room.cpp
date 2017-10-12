@@ -29,9 +29,9 @@ void Room::clearItem(int index) {
 }
 
 void Room::printRoom() {
-    cout << getDescription() << endl;
+    cout << endl << getDescription() << endl;
     if (!items.empty()) {
-        string itemsString = "\nOn the ground, there is";
+        string itemsString = "On the ground, there is";
         for (Item item : items) {
             itemsString += " a(n) " + item.getName() + ",";
         }
@@ -39,7 +39,7 @@ void Room::printRoom() {
         itemsString += ".";
         cout << itemsString << endl;
     }
-    string movementOptions = "\nFrom here, you can exit towards:";
+    string movementOptions = "From here, you can exit towards:";
     if (toNorth != nullptr) {
         movementOptions += " north,";
     }
