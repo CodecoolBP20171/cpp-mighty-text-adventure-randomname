@@ -10,12 +10,13 @@
 #include <vector>
 #include "../hpp/Area.hpp"
 #include "Item.h"
+#include "../enum/InputType.h"
 
 using namespace std;
 
 class Room {
 public:
-    Room(Area &area);
+    Room(int x, int y, Area &area, bool connNorth, bool connEast, bool connSouth, bool connWest);
 
     string getDescription() { return (*areaType).getDescription();}
 
@@ -37,7 +38,22 @@ public:
     Room* getSouthernRoom() { return toSouth; }
     Room* getWesternRoom() { return toWest; }
 
+    int getX() { return x; }
+    int getY() { return y; }
+    bool getConnNorth() { return connNorth; }
+    bool getConnEast() { return connEast; }
+    bool getConnSouth() { return connsouth; }
+    bool getConnWest() { return connWest; }
+
+    void removeObseleteConnections(InputType direction);
+
 private:
+    const int x;
+    const int y;
+    const bool connNorth;
+    const bool connEast;
+    const bool connsouth;
+    const bool connWest;
     Room *toNorth;
     Room *toEast;
     Room *toSouth;

@@ -4,12 +4,19 @@
 
 #include "../headers/Room.h"
 
-Room::Room(Area &area) :
+Room::Room(int x, int y, Area &area,
+           bool connNorth=true, bool connEast=true,
+           bool connSouth=true, bool connWest=true) :
+        x(x), y(y),
         toNorth(nullptr),
         toEast(nullptr),
         toSouth(nullptr),
         toWest(nullptr),
-        areaType(&area) {
+        areaType(&area),
+        connNorth(connNorth),
+        connEast(connEast),
+        connsouth(connSouth),
+        connWest(connWest) {
 
 }
 
@@ -46,4 +53,19 @@ void Room::printRoom() {
     }
     movementOptions += ".";
     cout << movementOptions << endl;
+}
+
+void Room::removeObseleteConnections(InputType direction) {
+    if (direction == InputType::GO_NORTH) {
+        toNorth = nullptr;
+    }
+    if (direction == InputType::GO_EAST) {
+        toEast = nullptr;
+    }
+    if (direction == InputType::GO_SOUTH) {
+        toSouth = nullptr;
+    }
+    if (direction == InputType::GO_WEST) {
+        toWest = nullptr;
+    }
 }

@@ -25,6 +25,7 @@ private:
     vector<Room> rooms;
     Room *firstRoom;
     Room *lastRoom;
+    Room *deathRoom;
     Player player;
 
     void loadAreas();
@@ -33,6 +34,8 @@ private:
     void loadRooms();
     bool step();
     void handleInput(string& input);
+    void connectRooms();
+    void temainateObseleteConnections();
 };
 
 
