@@ -17,9 +17,8 @@ public:
     Game(): player(Player()) {}
     void init();
     void run();
-    bool win = false;
-
 private:
+
     vector<Area> areas; // areas has only non-changeable information
     vector<ItemName> itemNames;
     vector<ItemWeight> itemWeights;
@@ -27,13 +26,17 @@ private:
     Room *firstRoom;
     Room *lastRoom;
     Player player;
-
     void loadAreas();
+
     void loadItemNames();
     void loadItemWeights();
     void loadRooms();
     bool step();
     void handleInput(string& input);
+
+    bool isGameLost = false;
+    void printWinMessage();
+    void printLoseMessage();
 };
 
 
