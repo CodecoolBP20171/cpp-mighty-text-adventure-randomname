@@ -15,7 +15,7 @@ Room::Room(int x, int y, Area &area,
         areaType(&area),
         connNorth(connNorth),
         connEast(connEast),
-        connsouth(connSouth),
+        connSouth(connSouth),
         connWest(connWest) {
 
 }
@@ -39,7 +39,7 @@ void Room::printRoom() {
         itemsString += ".";
         cout << itemsString << endl;
     }
-    string movementOptions = "From this room, you can exit towards:";
+    string movementOptions = "\nFrom here, you can exit towards:";
     if (toNorth != nullptr) {
         movementOptions += " north,";
     }
@@ -59,17 +59,17 @@ void Room::printRoom() {
     cout << movementOptions << endl;
 }
 
-void Room::removeObseleteConnections(InputType direction) {
-    if (direction == InputType::GO_NORTH) {
+void Room::removeObseleteConnections() {
+    if (!connNorth) {
         toNorth = nullptr;
     }
-    if (direction == InputType::GO_EAST) {
+    if (!connEast) {
         toEast = nullptr;
     }
-    if (direction == InputType::GO_SOUTH) {
+    if (!connSouth) {
         toSouth = nullptr;
     }
-    if (direction == InputType::GO_WEST) {
+    if (!connWest) {
         toWest = nullptr;
     }
 }

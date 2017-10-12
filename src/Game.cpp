@@ -7,6 +7,8 @@ void Game::init()
     loadItemWeights();
     loadItemNames();
     loadRooms();
+    connectRooms();
+    removeObseleteConnections();
     cout << "\nType \"h\" or \"help\" for help.\n\n";
     player.setCurrentRoom(*firstRoom);
     firstRoom->printRoom();
@@ -16,7 +18,7 @@ void Game::init()
 void Game::run()
 {
     while(step());
-    isGameLost ? printLoseMessage() : printWinMessage();
+    isGameWon ? printWinMessage() : printLoseMessage();
 }
 
 bool Game::step()
@@ -30,6 +32,9 @@ bool Game::step()
 
     // Update screen
     player.getCurrentRoom().printRoom();
+
+    if (player.getCurrentRoomPointer() == lastRoom) isGameWon = true;
+    if (player.getCurrentRoomPointer() == deathRoom) player.changeHealth(-100);
 
     return player.getCurrentRoomPointer() != lastRoom && player.isAlive();
 }
@@ -125,88 +130,30 @@ void Game::loadAreas()
 }
 
 void Game::loadRooms() {
-    rooms.emplace_back(Room(0, 0, areas[0], false, false, false, false));
+    rooms.emplace_back(Room(2, 3, areas[0], true, true, true, true));
+    rooms.emplace_back(Room(1, 3, areas[0], false, true, false, false));
+    rooms.emplace_back(Room(3, 3, areas[5], false, false, true, true));
+    rooms.emplace_back(Room(3, 4, areas[0], true, true, false, false));
+    rooms.emplace_back(Room(4, 4, areas[4], false, true, false, true));
+    rooms.emplace_back(Room(2, 4, areas[1], true, false, true, true));
+    rooms.emplace_back(Room(2, 5, areas[3], true, false, false, false));
+    rooms.emplace_back(Room(1, 4, areas[4], false, true, true, true));
+    rooms.emplace_back(Room(1, 5, areas[2], true, false, false, false));
+    rooms.emplace_back(Room(2, 2, areas[3], true, true, true, true));
+    rooms.emplace_back(Room(3, 2, areas[6], false, false, false, true));
+    rooms.emplace_back(Room(1, 2, areas[2], false, true, false, true));
+    rooms.emplace_back(Room(0, 2, areas[0], false, true, true, false));
+    rooms.emplace_back(Room(0, 3, areas[3], true, false, false, false));
+    rooms.emplace_back(Room(2, 1, areas[2], false, true, true, true));
+    rooms.emplace_back(Room(3, 1, areas[1], false, true, false, true));
+    rooms.emplace_back(Room(4, 1, areas[0], false, false, true, true));
+    rooms.emplace_back(Room(4, 2, areas[0], true, false, false, false));
+    rooms.emplace_back(Room(1, 1, areas[5], true, true, false, false));
+    rooms.emplace_back(Room(1, 0, areas[1], false, true, true, false));
+    rooms.emplace_back(Room(2, 0, areas[7], false, false, false, true));
 
-    rooms.emplace_back(Room(0, 0, areas[0], false, false, false, false));
-    rooms[0].setWesternRoom(rooms[1]);
-    rooms[1].setEasternRoom(rooms[0]);
-
-    rooms.emplace_back(Room(0, 0, areas[5], false, false, false, false));
-    rooms[0].setEasternRoom(rooms[2]);
-    rooms[2].setWesternRoom(rooms[0]);
-
-    rooms.emplace_back(Room(0, 0, areas[0], false, false, false, false));
-    rooms[2].setSouthernRoom(rooms[3]);
-    rooms[3].setNorthernRoom(rooms[2]);
-
-    rooms.emplace_back(Room(0, 0, areas[4], false, false, false, false));
-    rooms[3].setEasternRoom(rooms[4]);
-    rooms[4].setWesternRoom(rooms[3]);
-
-    rooms.emplace_back(Room(0, 0, areas[1], false, false, false, false));
-    rooms[0].setSouthernRoom(rooms[5]);
-    rooms[5].setNorthernRoom(rooms[0]);
-
-    rooms.emplace_back(Room(0, 0, areas[3], false, false, false, false));
-    rooms[5].setSouthernRoom(rooms[6]);
-    rooms[6].setNorthernRoom(rooms[5]);
-
-    rooms.emplace_back(Room(0, 0, areas[4], false, false, false, false));
     rooms[4].setEasternRoom(rooms[7]);
     rooms[7].setWesternRoom(rooms[4]);
-
-    rooms.emplace_back(Room(0, 0, areas[2], false, false, false, false));
-    rooms[7].setSouthernRoom(rooms[8]);
-    rooms[8].setNorthernRoom(rooms[7]);
-
-    rooms.emplace_back(Room(0, 0, areas[3], false, false, false, false));
-    rooms[0].setNorthernRoom(rooms[9]);
-    rooms[9].setSouthernRoom(rooms[0]);
-
-    rooms.emplace_back(Room(0, 0, areas[6], false, false, false, false));
-    rooms[9].setEasternRoom(rooms[10]);
-    rooms[10].setWesternRoom(rooms[9]);
-
-    rooms.emplace_back(Room(0, 0, areas[2], false, false, false, false));
-    rooms[9].setWesternRoom(rooms[11]);
-    rooms[11].setEasternRoom(rooms[9]);
-
-    rooms.emplace_back(Room(0, 0, areas[0], false, false, false, false));
-    rooms[11].setWesternRoom(rooms[12]);
-    rooms[12].setEasternRoom(rooms[11]);
-
-    rooms.emplace_back(Room(0, 0, areas[3], false, false, false, false));
-    rooms[12].setSouthernRoom(rooms[13]);
-    rooms[13].setNorthernRoom(rooms[12]);
-
-    rooms.emplace_back(Room(0, 0, areas[2], false, false, false, false));
-    rooms[9].setNorthernRoom(rooms[14]);
-    rooms[14].setSouthernRoom(rooms[9]);
-
-    rooms.emplace_back(Room(0, 0, areas[1], false, false, false, false));
-    rooms[14].setEasternRoom(rooms[15]);
-    rooms[15].setWesternRoom(rooms[14]);
-
-
-    rooms.emplace_back(Room(0, 0, areas[0], false, false, false, false));
-    rooms[15].setEasternRoom(rooms[16]);
-    rooms[16].setWesternRoom(rooms[15]);
-
-    rooms.emplace_back(Room(0, 0, areas[0], false, false, false, false));
-    rooms[16].setSouthernRoom(rooms[17]);
-    rooms[17].setNorthernRoom(rooms[16]);
-
-    rooms.emplace_back(Room(0, 0, areas[5], false, false, false, false));
-    rooms[14].setWesternRoom(rooms[18]);
-    rooms[18].setEasternRoom(rooms[14]);
-
-    rooms.emplace_back(Room(0, 0, areas[1], false, false, false, false));
-    rooms[18].setNorthernRoom(rooms[19]);
-    rooms[19].setSouthernRoom(rooms[18]);
-
-    rooms.emplace_back(Room(0, 0, areas[7], false, false, false, false));
-    rooms[19].setEasternRoom(rooms[20]);
-    rooms[20].setWesternRoom(rooms[19]);
 
     firstRoom = &rooms[0];
     lastRoom = &rooms[20];
@@ -255,4 +202,42 @@ void Game::printLoseMessage() {
             "     `888'     888   888  888   888      .oP\"888   888     888ooo888    888   888  888ooo888  .oP\"888  888   888  `8'\n"
             "      888      888   888  888   888     d8(  888   888     888    .o    888   888  888    .o d8(  888  888   888  .o.\n"
             "     o888o     `Y8bod8P'  `V88V\"V8P'    `Y888\"\"8o d888b    `Y8bod8P'    `Y8bod88P\" `Y8bod8P' `Y888\"\"8o `Y8bod88P\" Y8P\n\n";
+}
+
+void Game::connectRooms() {
+    int outerEnd = rooms.size() - 1;
+    int innerEnd = rooms.size();
+    for (int i = 0; i < outerEnd; ++i) {
+        for (int j = i + 1; j < innerEnd; ++j) {
+            if (rooms[i].getX() == rooms[j].getX()) {
+                if (rooms[i].getY() == rooms[j].getY() - 1) {
+                    // J is to the south of I
+                    rooms[i].setSouthernRoom(rooms[j]);
+                    rooms[j].setNorthernRoom(rooms[i]);
+                } else if (rooms[i].getY() == rooms[j].getY() + 1) {
+                    // J is to the north of I
+                    rooms[i].setNorthernRoom(rooms[j]);
+                    rooms[j].setSouthernRoom(rooms[i]);
+                }
+            }
+            if (rooms[i].getY() == rooms[j].getY()) {
+                if (rooms[i].getX() == rooms[j].getX() - 1) {
+                    // J is to the east of I
+                    rooms[i].setEasternRoom(rooms[j]);
+                    rooms[j].setWesternRoom(rooms[i]);
+                } else if (rooms[i].getX() == rooms[j].getX() + 1) {
+                    // J is to the west of I
+                    rooms[i].setWesternRoom(rooms[j]);
+                    rooms[j].setEasternRoom(rooms[i]);
+                }
+            }
+
+        }
+    }
+}
+
+void Game::removeObseleteConnections() {
+    for (Room& room : rooms) {
+        room.removeObseleteConnections();
+    }
 }

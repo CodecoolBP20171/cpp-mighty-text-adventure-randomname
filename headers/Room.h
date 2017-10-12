@@ -40,19 +40,15 @@ public:
 
     int getX() { return x; }
     int getY() { return y; }
-    bool getConnNorth() { return connNorth; }
-    bool getConnEast() { return connEast; }
-    bool getConnSouth() { return connsouth; }
-    bool getConnWest() { return connWest; }
 
-    void removeObseleteConnections(InputType direction);
+    void removeObseleteConnections();
 
 private:
     const int x;
     const int y;
     const bool connNorth;
     const bool connEast;
-    const bool connsouth;
+    const bool connSouth;
     const bool connWest;
     Room *toNorth;
     Room *toEast;

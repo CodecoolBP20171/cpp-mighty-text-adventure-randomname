@@ -35,10 +35,10 @@ private:
     bool step();
     void handleInput(string& input);
     void connectRooms();
-    void temainateObseleteConnections();
-    bool isGameLost = false;
+    bool isGameWon = false;
     void printWinMessage();
     void printLoseMessage();
+    void removeObseleteConnections();
 };
 
 
